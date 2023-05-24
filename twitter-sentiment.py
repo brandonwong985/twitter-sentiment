@@ -5,6 +5,7 @@ from scipy.special import softmax
 
 KEYWORD = 'Kim Chaewon'
 USERNAME = 'bobawastedbot'
+TWEET_COUNT = 10
 
 auth = tweepy.OAuthHandler(config.api_key, config.api_key_secret)
 auth.set_access_token(config.access_token, config.access_token_secret)
@@ -21,7 +22,7 @@ model = AutoModelForSequenceClassification.from_pretrained(roberta)
 tokenizer = AutoTokenizer.from_pretrained(roberta)
 labels = ['Negative', 'Neutral', 'Positive']
 
-tweets = api.search_tweets(q=KEYWORD, tweet_mode = 'extended', count = 10)
+tweets = api.search_tweets(q=KEYWORD, tweet_mode = 'extended', count = TWEET_COUNT)
 ids = []
 sentiment = []
 for t in tweets:
