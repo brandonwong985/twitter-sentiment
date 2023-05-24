@@ -2,8 +2,11 @@ import tweepy
 import config
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from scipy.special import softmax
+import random
 
-KEYWORD = 'Kim Chaewon'
+
+FILE_NAME = 'topics.txt'
+KEYWORD = random.choice(open(FILE_NAME).read().splitlines())
 USERNAME = 'bobawastedbot'
 TWEET_COUNT = 10
 
@@ -47,7 +50,7 @@ for t in tweets:
     print(f'tweet: {t.id} \n{proccessed_tweet}\n   {res} {labels[res]}')
     
 print(f'neg: {sentiment.count(0)}, neu: {sentiment.count(1)}, pos: {sentiment.count(2)}')
-msg = f'This is what 10 recent Tweeters think about {KEYWORD}:\nNegative: {sentiment.count(0)}\nNeutral: {sentiment.count(1)}\nPositive: {sentiment.count(2)}'
+msg = f'This is what {len(sentiment)} recent Tweeters think about {KEYWORD}:\nNegative: {sentiment.count(0)}\nNeutral: {sentiment.count(1)}\nPositive: {sentiment.count(2)}'
 api.update_status(status=msg)
 
 my_tweet = api.user_timeline(screen_name=USERNAME, count=1, exclude_replies=True, include_rts=False)
