@@ -46,7 +46,7 @@ for t in tweets:
             word = '#hashtag'
         words.append(word)
     proccessed_tweet = ' '.join(words)
-    # Get the sentiment analysis of the week
+    # Get the sentiment analysis of the tweet
     encoded_tweet = tokenizer(proccessed_tweet, return_tensors='pt')
     output = model(**encoded_tweet)
     scores = output[0][0].detach().numpy()
