@@ -30,6 +30,7 @@ labels = ['Negative', 'Neutral', 'Positive']
 
 # Get recent tweets about keyword
 tweets = api.search_tweets(q=KEYWORD, tweet_mode = 'extended', count = TWEET_COUNT)
+print(f'Topic is {KEYWORD}')
 ids = []
 sentiment = []
 for t in tweets:
