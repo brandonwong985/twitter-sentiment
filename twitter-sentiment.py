@@ -46,3 +46,12 @@ for t in tweets:
     sentiment.append(res)
     print(f'tweet: {t.id} \n{proccessed_tweet}\n   {res} {labels[res]}')
     
+print(f'neg: {sentiment.count(0)}, neu: {sentiment.count(1)}, pos: {sentiment.count(2)}')
+msg = f'This is what 10 recent Tweeters think about {KEYWORD}:\nNegative: {sentiment.count(0)}\nNeutral: {sentiment.count(1)}\nPositive: {sentiment.count(2)}'
+api.update_status(status=msg)
+
+my_tweet = api.user_timeline(screen_name=USERNAME, count=1, exclude_replies=True, include_rts=False)
+reply = 'Tweets sourced:\n'
+for id in ids[:]:
+    reply += f'{id}\n'
+api.update_status(status=reply, in_reply_to_status_id = my_tweet[0].id)
