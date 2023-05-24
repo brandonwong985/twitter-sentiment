@@ -61,6 +61,6 @@ api.update_status(status=msg)
 
 my_tweet = api.user_timeline(screen_name=USERNAME, count=1, exclude_replies=True, include_rts=False)
 reply = 'Tweets sourced:\n'
-for id in ids[]:
+for id in ids:
     reply += f'{id}\n'
 api.update_status(status=reply, in_reply_to_status_id = my_tweet[0].id)
