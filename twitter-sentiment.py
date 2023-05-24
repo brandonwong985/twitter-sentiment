@@ -57,7 +57,7 @@ for t in tweets:
     
 # Tweet about the results of the sentiment analysis
 print(f'neg: {sentiment.count(0)}, neu: {sentiment.count(1)}, pos: {sentiment.count(2)}')
-msg = f'This is what {len(sentiment)} recent Tweeters think about {KEYWORD}:\nNegative: {sentiment.count(0)}\nNeutral: {sentiment.count(1)}\nPositive: {sentiment.count(2)}'
+msg = f'This is what {len(sentiment)} recent Tweeter(s) think about {KEYWORD}:\nNegative: {sentiment.count(0)}\nNeutral: {sentiment.count(1)}\nPositive: {sentiment.count(2)}'
 api.update_status(status=msg)
 
 my_tweet = api.user_timeline(screen_name=USERNAME, count=1, exclude_replies=True, include_rts=False)
